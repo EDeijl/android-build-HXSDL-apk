@@ -73,7 +73,7 @@ echo "[+] Copy across assets"
 mkdir -p assets
 cp $EPIDEMIC_REPO/assets/* assets
 
-LIBS=`$THIS_DIR/resolve-libs arm-unknown-linux-androideabi-ghc-pkg Epidemic`
+LIBS=`$THIS_DIR/resolve-libs arm-unknown-linux-androideabi-ghc-pkg CPConsoleApp`
 rm -rf libEpidemic.a
 ar crsT libEpidemic.a $LIBS
 

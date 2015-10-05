@@ -1,7 +1,7 @@
 #
 # Path to Epidemic game repo
 #
-EPIDEMIC_REPO=$HOME/build/open-epidemic-game
+EPIDEMIC_REPO=$HOME/build/CPConsoleApp
 
 #
 # Path to Android NDK
