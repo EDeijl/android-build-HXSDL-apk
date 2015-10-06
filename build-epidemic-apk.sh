@@ -5,7 +5,7 @@ THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 BUILD_VARS=$THIS_DIR/build-vars.rc
 BUILD_VARS_BASE=$(basename $BUILD_VARS)
-APK=com.declarative.games.epidemic.beta-release.apk
+APK=com.erikdeijl.CPConsoleApp.apk
 CABAL=arm-linux-androideabi-cabal
 EPIDEMIC_C_LIBS="cairo cpufeatures freetype gmp iconv ogg pixman-1 png vorbis vorbisfile SDL2_mixer SDL2"
 
@@ -73,9 +73,9 @@ echo "[+] Copy across assets"
 mkdir -p assets
 cp $EPIDEMIC_REPO/assets/* assets
 
-LIBS=`$THIS_DIR/resolve-libs arm-unknown-linux-androideabi-ghc-pkg Epidemic`
-rm -rf libEpidemic.a
-ar crsT libEpidemic.a $LIBS
+LIBS=`$THIS_DIR/resolve-libs arm-unknown-linux-androideabi-ghc-pkg CPConsoleApp`
+rm -rf libCPConsoleApp.a
+ar crsT libCPConsoleApp.a $LIBS
 
 TGT=jni/epidemic-libs/armeabi
 mkdir -p $TGT
@@ -85,7 +85,7 @@ for i in $EPIDEMIC_C_LIBS; do
   cp $EPIDEMIC_C_LIB_DIR/lib$i.a $TGT || exit 1
 done
 
-cp libEpidemic.a $TGT
+cp libCPConsoleApp.a $TGT
 
 $NDK/ndk-build clean && $NDK/ndk-build -j9 && ant debug
 [ $? -eq 0 ] || exit 1
